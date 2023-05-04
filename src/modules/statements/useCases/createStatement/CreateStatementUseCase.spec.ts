@@ -52,8 +52,25 @@ describe("Create Statement", () => {
         user_id: "123",
         type: OperationType.DEPOSIT,
         amount: 500.0,
-        description: "statement test",
+        description: "deposit test",
       });
     }).rejects.toBeInstanceOf(CreateStatementError.UserNotFound);
+  });
+
+  it("should not be able to make a withdraw with insufficient funds", async () => {
+    expect(async () => {
+      const user = await createUserCase.execute({
+        name: "XXX",
+        email: "XXX@mail.com",
+        password: "XXX",
+      });
+
+      await createStatementUseCase.execute({
+        user_id: user.id,
+        type: OperationType.WITHDRAW,
+        amount: 500.0,
+        description: "withdraw test",
+      });
+    }).rejects.toBeInstanceOf(CreateStatementError.InsufficientFunds);
   });
 });

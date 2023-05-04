@@ -1,8 +1,6 @@
 import { InMemoryUsersRepository } from "@modules/users/repositories/in-memory/InMemoryUsersRepository";
-import { AppError } from "@shared/errors/AppError";
 import { CreateUserUseCase } from "@modules/users/useCases/createUser/CreateUserUseCase";
 import { InMemoryStatementsRepository } from "@modules/statements/repositories/in-memory/InMemoryStatementsRepository";
-import { CreateStatementUseCase } from "../createStatement/CreateStatementUseCase";
 import { GetBalanceUseCase } from "./GetBalanceUseCase";
 import { GetBalanceError } from "./GetBalanceError";
 
@@ -15,7 +13,6 @@ let inMemoryUsersRepository: InMemoryUsersRepository;
 let inMemoryStatementsRepository: InMemoryStatementsRepository;
 
 let createUserCase: CreateUserUseCase;
-let createStatementUseCase: CreateStatementUseCase;
 
 let getBalanceUseCase: GetBalanceUseCase;
 
@@ -25,10 +22,6 @@ describe("Get Balance", () => {
     inMemoryStatementsRepository = new InMemoryStatementsRepository();
 
     createUserCase = new CreateUserUseCase(inMemoryUsersRepository);
-    createStatementUseCase = new CreateStatementUseCase(
-      inMemoryUsersRepository,
-      inMemoryStatementsRepository
-    );
 
     getBalanceUseCase = new GetBalanceUseCase(
       inMemoryStatementsRepository,

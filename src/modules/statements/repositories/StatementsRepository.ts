@@ -1,11 +1,11 @@
 import { Repository } from "typeorm";
 
-import { dataSource } from "database/datasource";
 import { Statement } from "../entities/Statement";
 import { ICreateStatementDTO } from "../useCases/createStatement/ICreateStatementDTO";
 import { IGetBalanceDTO } from "../useCases/getBalance/IGetBalanceDTO";
 import { IGetStatementOperationDTO } from "../useCases/getStatementOperation/IGetStatementOperationDTO";
 import { IStatementsRepository } from "./IStatementsRepository";
+import { dataSource } from "../../../database/data-source";
 
 export class StatementsRepository implements IStatementsRepository {
   private repository: Repository<Statement>;

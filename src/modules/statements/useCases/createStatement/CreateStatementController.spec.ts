@@ -43,4 +43,23 @@ describe("Create Statement Controller", () => {
 
     expect(response.status).toBe(201);
   });
+
+  it("should be able to create a withdraw statement type", async () => {
+    const authentication = await request(app).post("/api/v1/sessions").send({
+      email: "admin@mail.com",
+      password: "admin",
+    });
+
+    const { token } = authentication.body;
+
+    const response = await request(app)
+      .post("/api/v1/statements/withdraw")
+      .send({
+        amount: 50,
+        description: "deposit",
+      })
+      .set({ Authorization: `Bearer ${token}` });
+
+    expect(response.status).toBe(201);
+  });
 });

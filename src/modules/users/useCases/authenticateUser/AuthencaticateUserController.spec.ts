@@ -24,4 +24,14 @@ describe("Create Statement Controller", () => {
     await dataSource.dropDatabase();
     await dataSource.destroy();
   });
+
+  it("should be able to authenticate user", async () => {
+    const response = await request(app).post("/api/v1/sessions").send({
+      email: "admin@mail.com",
+      password: "admin",
+    });
+
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty("token");
+  });
 });

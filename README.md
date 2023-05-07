@@ -2,6 +2,11 @@
 
 <h4>Desafio de refatoração de usecases e banco de dados alem de implementar os testes de integração e de unidades.</h4>
 
+<h3> 🚩 Testes de integração </h3>
+   implementado testes de integrações fazendo uma cobertura completa das rotas e controllers.
+
+<h3> 🌌 Testes de unidades </h3>
+  implementado testes de unidades fazendo uma cobertura completa da logica do sistema.
 
 <h3>🚨 Rotas da aplicação</h3>
 
@@ -50,4 +55,6 @@
 </details>
 
 
+para Testar a aplicação faça um clone do mesmo
 
+      yarn git clone <>

@@ -56,6 +56,18 @@
 </details>
 
 
-para Testar a aplicação faça um clone do mesmo
+🚦 Para Testar a aplicação faça um clone do mesmo
 
-      yarn git clone <>
+      yarn git clone https://github.com/Marcos-OLiveiraVO/Challenge-Unit-tests-nodejs.git
+  
+🚀 Instale as dependencias 
+  
+      yarn or npm install
+      
+🚀 Rode os testes
+
+      yarn test
+      
+🚀 Rode a aplicação 
+
+      yarn dev

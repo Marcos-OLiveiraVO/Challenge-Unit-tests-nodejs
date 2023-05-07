@@ -9,7 +9,7 @@ import { hashSync } from "bcryptjs";
 const id = uuidV4();
 const password = hashSync("admin", 8);
 
-describe("Create Statement Controller", () => {
+describe("Get Statement Operation Controller", () => {
   beforeAll(async () => {
     await dataSource.initialize();
     await dataSource.runMigrations();

@@ -24,4 +24,30 @@ describe("Create Statement Controller", () => {
     await dataSource.dropDatabase();
     await dataSource.destroy();
   });
+
+  it("should be able to get an statement operation", async () => {
+    const responseToken = await request(app).post("/api/v1/sessions").send({
+      email: "admin@mail.com",
+      password: "admin",
+    });
+
+    const { token } = responseToken.body;
+
+    const deposit = await request(app)
+      .post("/api/v1/statements/deposit")
+      .send({
+        amount: 100,
+        description: "deposit test",
+      })
+      .set({
+        Authorization: `Bearer ${token}`,
+      });
+
+    const response = await request(app)
+      .get(`/api/v1/statements/${deposit.body.id}`)
+      .set({ Authorization: `Bearer ${token}` });
+
+    expect(response.status).toBe(200);
+    expect(deposit.body).toHaveProperty("type");
+  });
 });
